@@ -9,6 +9,16 @@ interface Question {
   correctAnswer: number;
   explanation: string;
   modalVerb: string;
+  clueInfo?: {
+    clueWord?: string;
+    clueType?: string;
+    questionParts?: {
+      beforeHighlight: string;
+      highlightedPart: string;
+      afterHighlight: string;
+      clueType?: string;
+    }
+  }
 }
 
 interface User {
@@ -334,9 +344,51 @@ export default function Quiz() {
                       {selectedAnswer === currentQuestion.correctAnswer ? '✓ Doğru!' : '✗ Yanlış!'}
                     </span>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-200 text-base text-center">
+                  
+                  {/* Temel açıklama */}
+                  <p className="text-gray-700 dark:text-gray-200 text-base text-center mb-4">
                     <strong>Açıklama:</strong> {currentQuestion.explanation}
                   </p>
+
+                  {/* İpuçlarını gösterme - Yanlış cevaplarda */}
+                  {selectedAnswer !== currentQuestion.correctAnswer && currentQuestion.clueInfo && (
+                    <div className="mt-3 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border border-blue-200 dark:border-blue-800 w-full">
+                      <h4 className="text-center font-semibold text-blue-700 dark:text-blue-300 mb-3">
+                        Neden {currentQuestion.options[currentQuestion.correctAnswer]} kullanmalıyız?
+                      </h4>
+                      
+                      {/* Cümlede ipuçlarını görsel olarak vurgulama */}
+                      {currentQuestion.clueInfo.questionParts && currentQuestion.clueInfo.questionParts.highlightedPart && (
+                        <div className="text-gray-800 dark:text-gray-200 mb-3 text-base">
+                          <span>{currentQuestion.clueInfo.questionParts.beforeHighlight}</span>
+                          <span className="font-bold text-blue-700 dark:text-yellow-400 underline decoration-wavy decoration-2 underline-offset-4">
+                            {currentQuestion.clueInfo.questionParts.highlightedPart}
+                          </span>
+                          <span>{currentQuestion.clueInfo.questionParts.afterHighlight}</span>
+                        </div>
+                      )}
+                      
+                      {/* İpucu açıklaması */}
+                      <p className="text-gray-700 dark:text-gray-300 text-sm">
+                        <span className="font-semibold">İpucu:</span> Cümlede <span className="text-blue-700 dark:text-yellow-400 font-medium">{currentQuestion.clueInfo.questionParts.highlightedPart || "vurgulanan kısım"}</span> 
+                        {currentQuestion.clueInfo.clueType ? ` bir "${currentQuestion.clueInfo.clueType}" durumu gösterir` : ' bir ipucu içerir'} ve 
+                        bu durumda <span className="font-semibold text-blue-700 dark:text-blue-300">{currentQuestion.options[currentQuestion.correctAnswer]}</span> modal verb'i kullanılır.
+                      </p>
+                      
+                      {/* Yanlış seçim nedeni */}
+                      {selectedAnswer !== null && (
+                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">
+                          <span className="font-semibold text-red-600 dark:text-red-400">"{currentQuestion.options[selectedAnswer]}"</span> ise 
+                          {currentQuestion.modalVerb === 'must' ? ' kesinlik veya zorunluluk gerektiren durumlarda kullanılır.' :
+                           currentQuestion.modalVerb === 'can\'t' ? ' imkansızlık veya mantıksal çelişki durumlarında kullanılır.' : 
+                           currentQuestion.modalVerb === 'could' ? ' geçmiş yetenek veya koşullu olasılık durumlarında kullanılır.' :
+                           currentQuestion.modalVerb === 'may' ? ' izin veya orta derecede olasılık durumlarında kullanılır.' :
+                           ' düşük olasılık veya belirsizlik durumlarında kullanılır.'}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                  
                   <button
                     onClick={nextQuestion}
                     className="mt-6 inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-full shadow-lg hover:scale-105 hover:from-blue-700 hover:to-indigo-700 transition-all text-lg"

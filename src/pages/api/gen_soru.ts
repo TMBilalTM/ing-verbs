@@ -10,51 +10,76 @@ const modalVerbUsages = {
   'must': {
     usages: ['obligation', 'logical deduction', 'certainty', 'requirement', 'necessity'],
     explanations: [
-      'MUST - Zorunluluk ifade eder.',
-      'MUST - Kesin çıkarım ifade eder.',
-      'MUST - Güçlü bir ihtimal veya zorunluluk anlatır.',
-      'MUST - Kural veya gereklilik bildirir.',
-      'MUST - Mantıksal olarak kesin olan durum ifade eder.'
+      'MUST - Zorunluluk ifade eder. "must" kelimesi zorunluluk anlamındadır ve kaçınılmaz bir durum olduğunu belirtir.',
+      'MUST - Kesin çıkarım ifade eder. "must" kelimesi mantıksal bir çıkarım yapıldığını ve bunun kesin olarak doğru olduğunu düşündüğümüzü gösterir.',
+      'MUST - Güçlü bir ihtimal veya zorunluluk anlatır. Özellikle kanıtlara dayanarak kesin bir sonuca varmayı ifade eder.',
+      'MUST - Kural veya gereklilik bildirir. "According to the rules" veya benzeri ifadeler bir kuralın varlığını işaret eder.',
+      'MUST - Mantıksal olarak kesin olan durum ifade eder. İpucu: Cümledeki kanıt veya göstergeye dikkat edin.'
+    ],
+    clueWords: [
+      'certainly', 'definitely', 'surely', 'absolutely', 'no doubt', 'obviously', 'clearly', 
+      'according to the rules', 'it is necessary', 'it is required', 'evidence suggests', 
+      'we have proof', 'the only explanation', 'I\'m sure that'
     ]
   },
   'can\'t': {
     usages: ['impossibility', 'logical impossibility', 'prohibition', 'disbelief', 'certainty that something is not true'],
     explanations: [
-      'CAN\'T - İmkansızlık ifade eder.',
-      'CAN\'T - Mantıksal olarak imkansız durum ifade eder.',
-      'CAN\'T - Yasak veya kısıtlama ifade eder.',
-      'CAN\'T - İnanılmazlık veya şaşkınlık ifade eder.',
-      'CAN\'T - Bir şeyin doğru olmadığından emin olma durumunu ifade eder.'
+      'CAN\'T - İmkansızlık ifade eder. "can\'t" kelimesi bir şeyin yapılamayacağını veya mantıken mümkün olmadığını belirtir.',
+      'CAN\'T - Mantıksal olarak imkansız durum ifade eder. İpucu: Cümledeki mantıksal çelişkiye bakın.',
+      'CAN\'T - Yasak veya kısıtlama ifade eder. Bir şeyin yapılmasının yasak olduğunu veya izin verilmediğini belirtir.',
+      'CAN\'T - İnanılmazlık veya şaşkınlık ifade eder. Cümledeki "You can\'t be serious" gibi ifadeler şaşkınlık belirtir.',
+      'CAN\'T - Bir şeyin doğru olmadığından emin olma durumunu ifade eder. İpucu: "reason" kısmı neden imkansız olduğunu açıklar.'
+    ],
+    clueWords: [
+      'impossible', 'not possible', 'no way', 'doesn\'t make sense', 'contradicts', 'against the rules',
+      'forbidden', 'not allowed', 'prohibited', 'unbelievable', 'absurd', 'ridiculous', 'never',
+      'in no way', 'under no circumstances'
     ]
   },
   'could': {
     usages: ['past ability', 'possibility', 'polite request', 'suggestion', 'conditional possibility'],
     explanations: [
-      'COULD - Geçmişteki yetenek ifade eder.',
-      'COULD - Olasılık ifade eder.',
-      'COULD - Kibarca istek ifade eder.',
-      'COULD - Öneri veya tavsiye ifade eder.',
-      'COULD - Koşullu olasılık ifade eder.'
+      'COULD - Geçmişteki yetenek ifade eder. İpucu: "When I was young" veya "used to" gibi geçmişe yönelik ifadeler.',
+      'COULD - Olasılık ifade eder. Bir şeyin olabileceğini ama kesin olmadığını belirtir.',
+      'COULD - Kibarca istek ifade eder. Özellikle "Could you...?" şeklindeki soru cümleleri kibar bir rica içerir.',
+      'COULD - Öneri veya tavsiye ifade eder. Mümkün olan seçenekleri ifade etmek için kullanılır.',
+      'COULD - Koşullu olasılık ifade eder. İpucu: Cümlede "if" ile başlayan koşul cümlesine dikkat edin.'
+    ],
+    clueWords: [
+      'when I/he/she was young', 'in the past', 'used to', 'maybe', 'perhaps', 'possibly', 
+      'would it be possible', 'if you want', 'suggestion', 'one option', 'alternatively',
+      'if', 'condition', 'as a possibility'
     ]
   },
   'may': {
     usages: ['permission', 'possibility', 'formal request', 'wish', 'concession'],
     explanations: [
-      'MAY - İzin verme ifade eder.',
-      'MAY - Olasılık ifade eder.',
-      'MAY - Resmi istek ifade eder.',
-      'MAY - Dilek veya temenni ifade eder.',
-      'MAY - Taviz verme ifade eder.'
+      'MAY - İzin verme ifade eder. İpucu: "May I...?" şeklindeki soru cümleleri genellikle izin istemek için kullanılır.',
+      'MAY - Olasılık ifade eder. Bir şeyin olma ihtimalini belirtir, ancak orta derecede bir ihtimaldir.',
+      'MAY - Resmi istek ifade eder. Özellikle formal durumlarda kibarca istek belirtmek için kullanılır.',
+      'MAY - Dilek veya temenni ifade eder. İyi dilekleri ifade etmek için kullanılır.',
+      'MAY - Taviz verme ifade eder. Karşıt durumları kabul etmek için kullanılır.'
+    ],
+    clueWords: [
+      'permission', 'allow', 'is it ok if', 'possibly', 'perhaps', 'around 50% chance',
+      'formal request', 'in formal settings', 'officially', 'wish you all the best', 
+      'hope that', 'although', 'despite the fact', 'even though'
     ]
   },
   'might': {
     usages: ['lower possibility', 'tentative suggestion', 'uncertainty', 'hypothetical situation', 'polite opinion'],
     explanations: [
-      'MIGHT - Düşük olasılık ifade eder.',
-      'MIGHT - Belirsiz öneri ifade eder.',
-      'MIGHT - Belirsizlik veya kesin olmama durumu ifade eder.',
-      'MIGHT - Varsayımsal durum ifade eder.',
-      'MIGHT - Kibar bir şekilde görüş ifade eder.'
+      'MIGHT - Düşük olasılık ifade eder. "Might" kelimesi, bir şeyin olma ihtimalinin düşük olduğunu belirtir.',
+      'MIGHT - Belirsiz öneri ifade eder. Kesin olmayan, çekingen önerileri belirtir.',
+      'MIGHT - Belirsizlik veya kesin olmama durumu ifade eder. İpucu: "but not sure yet" gibi ifadeler belirsizliği gösterir.',
+      'MIGHT - Varsayımsal durum ifade eder. Gerçekleşmesi pek muhtemel olmayan durumları ifade eder.',
+      'MIGHT - Kibar bir şekilde görüş ifade eder. Belirsiz veya yumuşatılmış bir görüş belirtmek için kullanılır.'
+    ],
+    clueWords: [
+      'small chance', 'not very likely', 'possible but uncertain', 'not sure yet', 'doubtful',
+      'tentative', 'just a suggestion', 'thinking out loud', 'perhaps', 'maybe', 
+      'hypothetically speaking', 'in theory', 'if I may say so', 'in my humble opinion'
     ]
   }
 };
@@ -174,13 +199,155 @@ const generateAIQuestion = (targetVerb: string) => {
   const randomUsageIndex = Math.floor(Math.random() * usageType.usages.length);
   const explanation = usageType.explanations[randomUsageIndex];
   
+  // Cümlenin hangi kısmının ipucu olarak kullanılabileceğini belirleme
+  const clueWords = usageType.clueWords;
+  const randomClueIndex = Math.floor(Math.random() * clueWords.length);
+  const clueWord = clueWords[randomClueIndex];
+  
+  // Cümleyi parçalara ayrıştırma ve ipucu bölgeyi belirleme
+  let questionParts = parseQuestionForClues(question, targetVerb);
+  
+  // Eğer clue'ları bulamazsak basit bir ipucu oluştur
+  if (!questionParts.highlightedPart) {
+    // Cümledeki modal boşluk dışındaki kısımları analiz edelim
+    const parts = question.split('______');
+    if (parts.length >= 2) {
+      // Cümlenin boşluktan sonraki kısmını ipucu olarak kullan
+      questionParts = {
+        beforeHighlight: parts[0] + '______',
+        highlightedPart: parts[1].split('.')[0], // İlk nokta işaretine kadar olan kısmı al
+        afterHighlight: parts[1].includes('.') ? '.' + parts[1].split('.').slice(1).join('.') : '',
+        clueType: usageType.usages[randomUsageIndex]
+      };
+    }
+  }
+  
   return {
     question,
     options,
     correctAnswer: correctAnswerIndex,
     explanation,
     modalVerb: targetVerb,
-    isAIGenerated: true
+    isAIGenerated: true,
+    clueInfo: {
+      clueWord,
+      clueType: usageType.usages[randomUsageIndex],
+      questionParts
+    }
+  };
+};
+
+// Cümledeki ipucu bölgeleri tespit etme
+const parseQuestionForClues = (question: string, targetVerb: string) => {
+  // Modal verb'in kullanım türüne göre ipucu kelimeleri al
+  const usageType = modalVerbUsages[targetVerb as keyof typeof modalVerbUsages];
+  const clueWords = usageType.clueWords;
+  
+  // Cümledeki olası ipucu kelimelerini kontrol edelim
+  let highlightedPart = '';
+  let beforeHighlight = '';
+  let afterHighlight = '';
+  let clueType = '';
+  
+  // Cümleyi boşluk etrafında bölelim
+  const parts = question.split('______');
+  if (parts.length < 2) {
+    return { beforeHighlight: question, highlightedPart: '', afterHighlight: '', clueType: '' };
+  }
+  
+  // Önce ve sonra kısımlarını alalım
+  const beforeGap = parts[0];
+  const afterGap = parts[1];
+  
+  // İpucu kelimelerini arayalım
+  for (const clueWord of clueWords) {
+    // Boşluktan önceki kısımda ipucu var mı?
+    if (beforeGap.toLowerCase().includes(clueWord.toLowerCase())) {
+      // İpucu önceki kısımda
+      const regex = new RegExp(`(.*?)(\\b${clueWord}\\b.*?)(\\s+)`, 'i');
+      const match = beforeGap.match(regex);
+      
+      if (match) {
+        beforeHighlight = match[1];
+        highlightedPart = match[2];
+        afterHighlight = match[3] + '______' + afterGap;
+        clueType = usageType.usages.find(usage => 
+          usageType.clueWords.some(w => w.includes(clueWord))) || '';
+        break;
+      }
+    }
+    
+    // Boşluktan sonraki kısımda ipucu var mı?
+    if (afterGap.toLowerCase().includes(clueWord.toLowerCase())) {
+      // İpucu sonraki kısımda
+      const regex = new RegExp(`(.*?)(\\b${clueWord}\\b.*?)(\\..*)?$`, 'i');
+      const match = afterGap.match(regex);
+      
+      if (match) {
+        beforeHighlight = beforeGap + '______ ' + (match[1] || '');
+        highlightedPart = match[2];
+        afterHighlight = match[3] || '';
+        clueType = usageType.usages.find(usage => 
+          usageType.clueWords.some(w => w.includes(clueWord))) || '';
+        break;
+      }
+    }
+  }
+  
+  // Eğer ipucu kelimesi bulunamazsa
+  if (!highlightedPart) {
+    // Cümledeki yapısal ipuçlarını kontrol edelim
+    // Örneğin "if" conditional yapısı için ipucu olabilir
+    
+    // "if" yapısı kontrolü (could için)
+    if (targetVerb === 'could' && afterGap.toLowerCase().includes(' if ')) {
+      const ifParts = afterGap.split(' if ');
+      beforeHighlight = beforeGap + '______ ' + ifParts[0];
+      highlightedPart = 'if ' + ifParts[1].split('.')[0];
+      afterHighlight = ifParts[1].includes('.') ? '.' + ifParts[1].split('.').slice(1).join('.') : '';
+      clueType = 'conditional possibility';
+    }
+    
+    // "when I was young" gibi geçmiş yapılar (could için)
+    else if (targetVerb === 'could' && (beforeGap.toLowerCase().includes('when') && beforeGap.toLowerCase().includes('young'))) {
+      beforeHighlight = '';
+      highlightedPart = beforeGap.trim();
+      afterHighlight = '______ ' + afterGap;
+      clueType = 'past ability';
+    }
+    
+    // "May I" yapısı izin için
+    else if (targetVerb === 'may' && beforeGap.trim() === '') {
+      beforeHighlight = '';
+      highlightedPart = 'May I';
+      afterHighlight = ' ______ ' + afterGap;
+      clueType = 'permission';
+    }
+    
+    // "must" için kanıt içeren ifadeler
+    else if (targetVerb === 'must' && afterGap.toLowerCase().includes('because')) {
+      const becauseParts = afterGap.split('because');
+      beforeHighlight = beforeGap + '______ ' + becauseParts[0];
+      highlightedPart = 'because' + becauseParts[1];
+      afterHighlight = '';
+      clueType = 'logical deduction';
+    }
+    
+    // "can't" için reason/sebep içeren ifadeler
+    else if (targetVerb === 'can\'t' && afterGap.includes('.')) {
+      const reasonParts = afterGap.split('.');
+      beforeHighlight = beforeGap + '______ ' + reasonParts[0] + '.';
+      highlightedPart = reasonParts.length > 1 ? reasonParts[1].trim() : '';
+      afterHighlight = reasonParts.length > 2 ? '.' + reasonParts.slice(2).join('.') : '';
+      clueType = 'logical impossibility';
+    }
+  }
+  
+  return {
+    beforeHighlight,
+    highlightedPart,
+    afterHighlight,
+    clueType
   };
 };
 
@@ -239,4 +406,3 @@ export default async function handler(
     });
   }
 }
- 
