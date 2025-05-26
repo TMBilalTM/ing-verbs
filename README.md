@@ -42,9 +42,9 @@ Modern ve etkileşimli bir İngilizce Modal Verbs (must, can't, could, may, migh
       <td align="center"><b>Sıralama</b></td>
     </tr>
     <tr>
-      <td><img src="https://via.placeholder.com/300x200/3B82F6/FFFFFF?text=Ana+Sayfa" alt="Ana Sayfa" /></td>
-      <td><img src="https://via.placeholder.com/300x200/10B981/FFFFFF?text=Quiz+Ekranı" alt="Quiz Ekranı" /></td>
-      <td><img src="https://via.placeholder.com/300x200/6366F1/FFFFFF?text=Sıralama" alt="Sıralama" /></td>
+      <td><img src="https://github.com/user-attachments/assets/2d946aa0-9e21-4e62-bd26-2a50d431f97a" alt="Ana Sayfa" /></td>
+      <td><img src="https://github.com/user-attachments/assets/a2acb702-a216-432e-89bd-011e9f760ca7" alt="Quiz Ekranı" /></td>
+      <td><img src="https://github.com/user-attachments/assets/916d9580-8dea-4def-bbcf-4f83efbbb901" alt="Sıralama" /></td>
     </tr>
   </table>
 </div>
