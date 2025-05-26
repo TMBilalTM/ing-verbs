@@ -1,6 +1,6 @@
 import { BookOpen, Trophy, Users, Brain, Zap, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-
+ 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 to-gray-900 text-white flex flex-col p-4 selection:bg-blue-500 selection:text-white">
@@ -16,6 +16,7 @@ export default function Home() {
           <Link href="/quiz" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
             Quiz
           </Link>
+
           <Link href="/leaderboard" className="text-gray-300 hover:text-blue-400 transition-colors font-medium">
             Sıralama
           </Link>

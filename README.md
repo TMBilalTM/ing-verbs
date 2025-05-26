@@ -20,7 +20,7 @@ Modern ve etkileşimli bir İngilizce Modal Verbs (must, can't, could, may, migh
 - **Anlık Sıralama**: Gerçek zamanlı güncellenen kullanıcı sıralaması
 - **Responsive Tasarım**: Mobil ve masaüstü cihazlarda mükemmel görünüm
 - **Kolay Kullanım**: Sadece kullanıcı adı ile giriş yapabilme
-- **Detaylı İstatistikler**: Puan, doğruluk oranı ve grafik analizleri
+- **Detaylı İstatistikler**: Puan, doğruluk oranı ve grafik analizleri 
 - **Dark Mode**: Otomatik karanlık/aydınlık tema desteği
 
 ## 🛠 Teknolojiler

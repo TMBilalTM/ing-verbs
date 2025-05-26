@@ -261,7 +261,7 @@ export default function Quiz() {
           </div>
         </div>
       </header>
-
+ 
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center py-8">
         <div className="w-full max-w-xl mx-auto bg-white/90 dark:bg-gray-800/90 rounded-3xl shadow-2xl p-8 border border-blue-100 dark:border-blue-900 flex flex-col min-h-[70vh] justify-center">

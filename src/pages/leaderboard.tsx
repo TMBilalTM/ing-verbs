@@ -140,7 +140,7 @@ export default function Leaderboard() {
             <Link
               href="/quiz"
               className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-blue-500/40 text-lg"
-            >
+            > 
               <Zap className="mr-2 h-5 w-5" />
               İlk Quizi Çöz
             </Link>
