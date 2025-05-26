@@ -270,7 +270,7 @@ const parseQuestionForClues = (question: string, targetVerb: string) => {
       if (match) {
         beforeHighlight = match[1];        highlightedPart = match[2];
         afterHighlight = match[3] + '______' + afterGap;
-        clueType = usageType.usages.find(_ => 
+        clueType = usageType.usages.find(() => 
           usageType.clueWords.some(w => w.includes(clueWord))) || '';
         break;
       }
@@ -285,7 +285,7 @@ const parseQuestionForClues = (question: string, targetVerb: string) => {
       if (match) {
         beforeHighlight = beforeGap + '______ ' + (match[1] || '');        highlightedPart = match[2];
         afterHighlight = match[3] || '';
-        clueType = usageType.usages.find(_ => 
+        clueType = usageType.usages.find(() => 
           usageType.clueWords.some(w => w.includes(clueWord))) || '';
         break;
       }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Brain, Clock, Star, ArrowRight, Home, Trophy } from 'lucide-react';
 import Link from 'next/link';
 
@@ -154,8 +154,7 @@ export default function Quiz() {
       setLoading(false);
     }
   };
-
-  const handleAnswer = (answerIndex: number) => {
+  const handleAnswer = useCallback((answerIndex: number) => {
     if (selectedAnswer !== null || showResult) return;
 
     setSelectedAnswer(answerIndex);
@@ -367,17 +366,16 @@ export default function Quiz() {
                         </div>
                       )}
                       
-                      {/* İpucu açıklaması */}
-                      <p className="text-gray-700 dark:text-gray-300 text-sm">
-                        <span className="font-semibold">İpucu:</span> Cümlede <span className="text-blue-700 dark:text-yellow-400 font-medium">{currentQuestion.clueInfo.questionParts.highlightedPart || "vurgulanan kısım"}</span> 
-                        {currentQuestion.clueInfo.clueType ? ` bir "${currentQuestion.clueInfo.clueType}" durumu gösterir` : ' bir ipucu içerir'} ve 
-                        bu durumda <span className="font-semibold text-blue-700 dark:text-blue-300">{currentQuestion.options[currentQuestion.correctAnswer]}</span> modal verb'i kullanılır.
+                      {/* İpucu açıklaması */}                      <p className="text-gray-700 dark:text-gray-300 text-sm">
+                        <span className="font-semibold">İpucu:</span> Cümlede <span className="text-blue-700 dark:text-yellow-400 font-medium">{currentQuestion.clueInfo.questionParts?.highlightedPart || "vurgulanan kısım"}</span> 
+                        {currentQuestion.clueInfo.clueType ? ` bir &quot;${currentQuestion.clueInfo.clueType}&quot; durumu gösterir` : ' bir ipucu içerir'} ve 
+                        bu durumda <span className="font-semibold text-blue-700 dark:text-blue-300">{currentQuestion.options[currentQuestion.correctAnswer]}</span> modal verb&apos;i kullanılır.
                       </p>
                       
                       {/* Yanlış seçim nedeni */}
                       {selectedAnswer !== null && (
                         <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">
-                          <span className="font-semibold text-red-600 dark:text-red-400">"{currentQuestion.options[selectedAnswer]}"</span> ise 
+                          <span className="font-semibold text-red-600 dark:text-red-400">&quot;{currentQuestion.options[selectedAnswer]}&quot;</span> ise 
                           {currentQuestion.modalVerb === 'must' ? ' kesinlik veya zorunluluk gerektiren durumlarda kullanılır.' :
                            currentQuestion.modalVerb === 'can\'t' ? ' imkansızlık veya mantıksal çelişki durumlarında kullanılır.' : 
                            currentQuestion.modalVerb === 'could' ? ' geçmiş yetenek veya koşullu olasılık durumlarında kullanılır.' :
