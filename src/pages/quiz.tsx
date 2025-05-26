@@ -38,7 +38,6 @@ export default function Quiz() {
   const [timeLeft, setTimeLeft] = useState(30);
   const [questionCount, setQuestionCount] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-
   // Timer effect
   useEffect(() => {
     if (currentUser && currentQuestion && !showResult && timeLeft > 0) {
@@ -47,7 +46,7 @@ export default function Quiz() {
     } else if (timeLeft === 0 && !showResult) {
       handleAnswer(-1); // Time's up, wrong answer
     }
-  }, [timeLeft, currentUser, currentQuestion, showResult]);
+  }, [timeLeft, currentUser, currentQuestion, showResult, handleAnswer]);
 
   // Kullanıcı adı localStorage'da varsa otomatik olarak ayarla
   useEffect(() => {
