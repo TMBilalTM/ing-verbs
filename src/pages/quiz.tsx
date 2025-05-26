@@ -38,6 +38,45 @@ export default function Quiz() {
   const [timeLeft, setTimeLeft] = useState(30);
   const [questionCount, setQuestionCount] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
+  
+  // Answer handler function
+  const handleAnswer = useCallback((answerIndex: number) => {
+    if (selectedAnswer !== null || showResult) return;
+
+    setSelectedAnswer(answerIndex);
+    setShowResult(true);
+
+    const isCorrect = answerIndex === currentQuestion?.correctAnswer;
+    const newQuestionCount = questionCount + 1;
+    const newCorrectAnswers = correctAnswers + (isCorrect ? 1 : 0);
+
+    setQuestionCount(newQuestionCount);
+    setCorrectAnswers(newCorrectAnswers);
+
+    // Update user stats
+    if (currentUser) {
+      const updatedUser: User = {
+        ...currentUser,
+        score: currentUser.score + (isCorrect ? 10 : 0),
+        questionsAnswered: newQuestionCount,
+        accuracy: Math.round((newCorrectAnswers / newQuestionCount) * 100)
+      };
+      setCurrentUser(updatedUser);
+
+      // Save to localStorage for leaderboard
+      const users = JSON.parse(localStorage.getItem('quizUsers') || '[]');
+      const existingUserIndex = users.findIndex((u: User) => u.username === updatedUser.username);
+      
+      if (existingUserIndex >= 0) {
+        users[existingUserIndex] = updatedUser;
+      } else {
+        users.push(updatedUser);
+      }
+      
+      localStorage.setItem('quizUsers', JSON.stringify(users));
+    }
+  }, [currentQuestion, correctAnswers, questionCount, selectedAnswer, showResult, currentUser]);
+  
   // Timer effect
   useEffect(() => {
     if (currentUser && currentQuestion && !showResult && timeLeft > 0) {
@@ -149,23 +188,10 @@ export default function Quiz() {
       ];
 
       const randomQuestion = fallbackQuestions[Math.floor(Math.random() * fallbackQuestions.length)];
-      setCurrentQuestion(randomQuestion);
-    } finally {
+      setCurrentQuestion(randomQuestion);    } finally {
       setLoading(false);
     }
   };
-  const handleAnswer = useCallback((answerIndex: number) => {
-    if (selectedAnswer !== null || showResult) return;
-
-    setSelectedAnswer(answerIndex);
-    setShowResult(true);
-
-    const isCorrect = answerIndex === currentQuestion?.correctAnswer;
-    const newQuestionCount = questionCount + 1;
-    const newCorrectAnswers = correctAnswers + (isCorrect ? 1 : 0);
-
-    setQuestionCount(newQuestionCount);
-    setCorrectAnswers(newCorrectAnswers);
 
     // Update user stats
     if (currentUser) {
@@ -189,7 +215,7 @@ export default function Quiz() {
       
       localStorage.setItem('quizUsers', JSON.stringify(users));
     }
-  };
+  }, [currentQuestion, correctAnswers, questionCount, selectedAnswer, showResult, currentUser]);
 
   const nextQuestion = () => {
     generateQuestion();
