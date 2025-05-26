@@ -9,6 +9,15 @@ interface Question {
   correctAnswer: number;
   explanation: string;
   modalVerb: string;
+  clueInfo?: {
+    clueWord?: string;
+    clueType?: string;
+    questionParts?: {
+      beforeHighlight: string;
+      highlightedPart: string;
+      afterHighlight: string;
+    }
+  }
 }
 
 interface User {

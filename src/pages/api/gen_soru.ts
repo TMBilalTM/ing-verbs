@@ -84,71 +84,83 @@ const modalVerbUsages = {
   }
 };
 
-// Her modal verb için cümle şablonları
+// Her modal verb için cümle şablonları - Daha tutarlı ve mantıklı şablonlar
 const sentenceTemplates = {
   'must': [
-    'You ______ {action} {timePhrase}.',
-    '{subject} ______ {action} {object} {timePhrase}.',
-    'According to the rules, we ______ {action} {timePhrase}.',
-    '{subject} ______ be {adjective} because {reason}.',
-    '{subject} speaks {language} perfectly. {subject2} ______ have lived in {country}.'
+    'You ______ {action} {timePhrase}. It\'s required by the rules.',
+    '{subject} ______ {action} {object} {timePhrase}. There\'s no other option.',
+    'According to the regulations, we ______ {action} {timePhrase}.',
+    '{subject} ______ be {adjective} because we have clear evidence.',
+    '{subject} got 100% on the test. {subject2} ______ have studied very hard.',
+    'Look at those dark clouds. It ______ rain soon.',
+    'This ______ be the correct address. It matches the description perfectly.',
+    'Everyone ______ follow the safety procedures during the emergency drill.'
   ],
   'can\'t': [
-    '{subject} ______ {action} {timePhrase}. {reason}',
-    'You ______ be serious! {reason}',
-    '{subject} ______ have {pastParticiple} {object}. {reason}',
-    'That ______ be {subject}. {reason}',
-    'It\'s {adjective}. We ______ {action} {timePhrase}.'
+    '{subject} ______ {action} {timePhrase}. It\'s physically impossible.',
+    'You ______ be serious! That\'s completely absurd.',
+    '{subject} ______ have {pastParticiple} {object}. {subject} was with me the whole time.',
+    'That ______ be {subject}. {subject} is currently traveling abroad.',
+    'It\'s {adjective}. We ______ go outside in this weather.',
+    'This ______ be the right solution. I\'ve tried it and it doesn\'t work.',
+    'She ______ have finished the project already. It usually takes at least a week.',
+    'He ______ be a professional athlete. He doesn\'t have the proper training.'
   ],
   'could': [
-    'When {subject} was young, {subject} ______ {action} {adverb}.',
-    'We ______ {action} {timePhrase} if {condition}.',
-    '{subject} ______ {action} {object} if {subject2} wanted to.',
-    '{subject} ______ {action}, but I\'m not sure if {subject2} will.',
-    '{question} ______ you help me with this problem?'
+    'When I was younger, I ______ {action} for hours without getting tired.',
+    'We ______ try again tomorrow if today doesn\'t work out.',
+    '______ you help me with this problem, please?',
+    'If we had more time, we ______ visit the museum as well.',
+    '{subject} ______ speak three languages fluently by the age of ten.',
+    'I ______ lend you my car if you need it.',
+    'We ______ meet at the coffee shop or the library, whichever you prefer.',
+    'The document ______ be in the filing cabinet. Have you checked there?'
   ],
   'may': [
-    '______ I {action} {object}, please?',
-    '{subject} ______ {action} {timePhrase}.',
-    'You ______ {action} early today.',
-    'According to the forecast, it ______ rain {timePhrase}.',
-    '{subject} ______ not come to the meeting. {reason}'
+    '______ I borrow your pen for a moment?',
+    'We ______ experience some delays due to the weather conditions.',
+    'Students ______ use the library until 10 PM on weekdays.',
+    '{subject} ______ join us later if {subject} has time.',
+    'You ______ leave early today as you\'ve completed all your tasks.',
+    'The concert ______ be cancelled if the weather gets worse.',
+    '______ we come in now? The meeting is about to start.',
+    'Although she studied hard, she ______ not pass the exam.'
   ],
   'might': [
-    '{subject} ______ {action} {timePhrase}, but {subject2}\'s not sure yet.',
-    'I ______ be late for the meeting.',
-    '{subject} ______ know the answer, but I\'m not sure.',
-    'Take an umbrella. It ______ rain later.',
-    'The package ______ arrive {timePhrase}, but there\'s no guarantee.'
+    '{subject} ______ come to the party, but {subject} is not sure yet.',
+    'I ______ go to the cinema this weekend, but I haven\'t decided.',
+    'It ______ rain later, but the forecast is uncertain.',
+    'We ______ be able to help you, but I need to check with my manager first.',
+    'The train ______ be delayed due to the bad weather, it\'s possible.',
+    'I ______ have left my keys at home. I\'m not certain.',
+    'She ______ or ______ not agree with the proposal. It\'s hard to predict.',
+    'This solution ______ work, but I\'m not very confident about it.'
   ]
 };
 
-// Şablonları doldurmak için değişken havuzları
+// Değişken havuzları - Daha geniş ve anlamlı seçenekler
 const variablePools = {
-  subject: ['I', 'you', 'he', 'she', 'they', 'we', 'John', 'Mary', 'the teacher', 'the doctor', 'the student', 'my friend', 'my boss', 'the manager', 'the children', 'the experts', 'scientists', 'the government'],
-  subject2: ['he', 'she', 'they', 'I', 'you', 'we', 'the teacher', 'the doctor'],
-  action: ['go', 'study', 'work', 'come', 'finish', 'leave', 'start', 'help', 'call', 'visit', 'meet', 'send', 'prepare', 'clean', 'fix', 'solve', 'read', 'write', 'learn', 'teach'],
-  object: ['the homework', 'the project', 'the exam', 'the meeting', 'the report', 'the presentation', 'the book', 'the letter', 'the house', 'the car', 'the problem', 'the question', 'the answer', 'the solution', 'the task', 'the assignment', 'the document', 'the email'],
-  timePhrase: ['tomorrow', 'next week', 'yesterday', 'last month', 'today', 'right now', 'soon', 'in the morning', 'in the evening', 'at night', 'on Monday', 'before the deadline', 'within an hour', 'during the weekend', 'by next Friday'],
-  reason: ['I saw her there', 'it\'s too late', 'the weather is bad', 'we don\'t have enough time', 'he told me so', 'she has another appointment', 'they aren\'t ready yet', 'the office is closed', 'it\'s impossible', 'that\'s what the rules say', 'I heard the news', 'there\'s no other explanation'],
-  adjective: ['tired', 'happy', 'sad', 'angry', 'excited', 'nervous', 'worried', 'surprised', 'confused', 'disappointed', 'satisfied', 'relieved', 'hungry', 'thirsty', 'sick', 'healthy', 'busy', 'free', 'right', 'wrong'],
-  adverb: ['quickly', 'slowly', 'easily', 'hardly', 'well', 'badly', 'carefully', 'carelessly', 'perfectly', 'terribly', 'regularly', 'rarely', 'always', 'never', 'sometimes', 'often', 'usually', 'occasionally', 'frequently', 'seldom'],
-  language: ['English', 'French', 'Spanish', 'German', 'Italian', 'Chinese', 'Japanese', 'Russian', 'Arabic', 'Portuguese'],
-  country: ['England', 'France', 'Spain', 'Germany', 'Italy', 'China', 'Japan', 'Russia', 'USA', 'Canada', 'Australia', 'Brazil', 'Mexico', 'India', 'Egypt', 'Turkey'],
-  pastParticiple: ['done', 'seen', 'finished', 'completed', 'written', 'read', 'fixed', 'solved', 'prepared', 'checked'],
-  condition: ['you want', 'it\'s necessary', 'you have time', 'the weather is good', 'we finish early', 'everyone agrees', 'there\'s enough money', 'they allow us', 'it\'s possible', 'we plan ahead'],
-  question: ['Would', 'Could', 'Do you think']
+  'subject': ['I', 'you', 'he', 'she', 'they', 'we', 'John', 'Maria', 'the teacher', 'the doctor', 'my brother', 'my sister', 'the students', 'the manager', 'the team'],
+  'subject2': ['he', 'she', 'they', 'John', 'Maria'],
+  'action': ['visit Paris', 'finish the project', 'attend the meeting', 'submit the assignment', 'learn Spanish', 'solve this problem', 'complete the task', 'pass the exam', 'read this book', 'clean the house', 'prepare for the presentation'],
+  'timePhrase': ['by tomorrow', 'next week', 'before the deadline', 'in two hours', 'this weekend', 'by the end of the month', 'during the holiday', 'every day', 'when necessary', 'soon'],
+  'object': ['the report', 'the assignment', 'the project', 'those books', 'the contract', 'the presentation', 'this application', 'the task', 'these documents'],
+  'adjective': ['tired', 'excited', 'nervous', 'happy', 'worried', 'busy', 'ill', 'successful', 'responsible', 'creative', 'professional', 'experienced'],
+  'reason': ['the evidence is clear', 'all signs point to it', 'there\'s no other explanation', 'it\'s the only possibility', 'that\'s what the rules state', 'we have proof'],
+  'pastParticiple': ['completed', 'finished', 'written', 'read', 'eaten', 'seen', 'visited', 'solved', 'delivered', 'prepared'],
+  'language': ['French', 'Spanish', 'German', 'Mandarin', 'Arabic', 'Japanese', 'Italian', 'Russian', 'Portuguese'],
+  'country': ['France', 'Spain', 'Germany', 'China', 'Japan', 'Italy', 'Brazil', 'Mexico', 'Canada', 'Australia']
 };
 
-// Diğer modal verb'leri bu modal verb'in seçeneklerinden çıkartalım (doğru cevap her zaman seçeneklerde olmalı)
-const getOtherOptions = (correctVerb: string): string[] => {
-  const otherOptions = modalVerbs.filter(verb => verb !== correctVerb);
-  // Rastgele 3 tane seçelim
-  const shuffledOptions = otherOptions.sort(() => 0.5 - Math.random());
-  return shuffledOptions.slice(0, 3);
+// Rastgele ama belirli modal verb dışında seçenekler üretme
+const getOtherOptions = (targetVerb: string): string[] => {
+  return modalVerbs
+    .filter(verb => verb !== targetVerb)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 3);
 };
 
-// Şablon içindeki değişkenleri gerçek değerlerle değiştirme
+// Şablon içindeki değişkenleri gerçek değerlerle değiştirme - Geliştirilmiş mantık
 const fillTemplate = (template: string): string => {
   // Tüm değişkenleri değiştirelim
   let filledTemplate = template;
@@ -157,6 +169,9 @@ const fillTemplate = (template: string): string => {
   const variables = template.match(/\{(\w+)\}/g);
   
   if (variables) {
+    // Takip edilen değişkenleri tutmak için
+    const usedValues: Record<string, string> = {};
+    
     variables.forEach(variable => {
       // {} işaretlerini kaldır
       const varName = variable.replace(/[{}]/g, '');
@@ -164,32 +179,143 @@ const fillTemplate = (template: string): string => {
       // Değişken havuzundan rastgele bir değer seç
       if (variablePools[varName as keyof typeof variablePools]) {
         const pool = variablePools[varName as keyof typeof variablePools];
-        const randomValue = pool[Math.floor(Math.random() * pool.length)];
         
-        // Şablonda değiştir
-        filledTemplate = filledTemplate.replace(variable, randomValue);
+        // Eğer bu bir subject ise ve daha önce kullanıldıysa, aynı değeri kullan
+        // Bu tutarlılık sağlar
+        if ((varName === 'subject2' || varName === 'subject') && usedValues['subject']) {
+          if (varName === 'subject2' && ['I', 'you', 'we'].includes(usedValues['subject'])) {
+            // I, you, we için subject2 olarak farklı bir değer kullan
+            const randomValue = pool.filter(v => !['I', 'you', 'we'].includes(v))[Math.floor(Math.random() * (pool.length - 3))];
+            filledTemplate = filledTemplate.replace(variable, randomValue);
+            usedValues[varName] = randomValue;
+          } else {
+            // Tutarlılık için aynı değeri kullan
+            filledTemplate = filledTemplate.replace(variable, usedValues['subject']);
+            usedValues[varName] = usedValues['subject'];
+          }
+        } else {
+          // Rastgele değer seç
+          const randomValue = pool[Math.floor(Math.random() * pool.length)];
+          filledTemplate = filledTemplate.replace(variable, randomValue);
+          usedValues[varName] = randomValue;
+        }
       }
     });
   }
   
-  return filledTemplate;
+  // Büyük harfle başlayan cümle olsun
+  return filledTemplate.charAt(0).toUpperCase() + filledTemplate.slice(1);
 };
 
-// AI benzeri soru oluşturucu
-const generateAIQuestion = (targetVerb: string) => {
-  // İlgili modal verb için şablonları al
-  const templates = sentenceTemplates[targetVerb as keyof typeof sentenceTemplates];
+// Sorunun mantıklı olup olmadığını kontrol et
+const isQuestionValid = (question: string, targetVerb: string): boolean => {
+  // Temel kontroller
+  if (!question || question.length < 10) return false;
   
-  // Rastgele bir şablon seç
-  const randomTemplateIndex = Math.floor(Math.random() * templates.length);
-  const template = templates[randomTemplateIndex];
+  // Tekrarlayan kelimeler var mı?
+  const words = question.toLowerCase().split(/\s+/);
+  const wordCounts: Record<string, number> = {};
   
-  // Şablonu doldur
-  const question = fillTemplate(template);
+  words.forEach(word => {
+    if (word.length > 3) { // 3 harften uzun kelimeleri kontrol et
+      wordCounts[word] = (wordCounts[word] || 0) + 1;
+    }
+  });
+  
+  // Herhangi bir kelime çok sık tekrarlanıyor mu?
+  const repeatedWords = Object.keys(wordCounts).filter(word => wordCounts[word] > 2);
+  if (repeatedWords.length > 1) return false; // Birden fazla kelime tekrarlanıyorsa geçersiz
+  
+  // Modal verb için uygunluk kontrolü
+  // Her modal için özel kurallar ekleyebilirsiniz
+  switch(targetVerb) {
+    case 'must':
+      // "must" genelde zorunluluk veya kesin çıkarım içerir
+      return question.includes('required') || 
+             question.includes('have to') ||
+             question.includes('clear evidence') ||
+             question.includes('only option') ||
+             question.includes('regulation');
+    
+    case 'can\'t':
+      // "can't" genelde imkansızlık veya kesin olmayan durum ifade eder
+      return question.includes('impossible') || 
+             question.includes('absurd') ||
+             question.includes('doesn\'t work') ||
+             question.toLowerCase().includes('can\'t be');
+    
+    case 'could':
+      // "could" genelde geçmiş yetenek veya olasılık
+      return question.includes('When I was') || 
+             question.includes('if') ||
+             question.includes('please') ||
+             question.includes('by the age of');
+    
+    case 'may':
+      // "may" genelde izin veya olasılık
+      return question.toLowerCase().startsWith('may i') || 
+             question.includes('experience') ||
+             question.includes('Students may') ||
+             question.includes('if');
+    
+    case 'might':
+      // "might" düşük olasılık
+      return question.includes('but') || 
+             question.includes('uncertain') ||
+             question.includes('possible') ||
+             question.includes('not sure');
+    
+    default:
+      return true;
+  }
+};
+
+// AI benzeri soru oluşturucu - Geliştirilmiş mantık
+const generateAIQuestion = (targetVerb: string, difficulty: string = 'medium') => {
+  let attempts = 0;
+  let question = '';
+  let isValid = false;
+  
+  // Geçerli bir soru oluşturana kadar dene (maks 5 deneme)
+  while (!isValid && attempts < 5) {
+    // İlgili modal verb için şablonları al
+    const templates = sentenceTemplates[targetVerb as keyof typeof sentenceTemplates];
+    
+    // Zorluk seviyesine göre şablon seç
+    let template;
+    if (difficulty === 'easy') {
+      // Kolay: Basit ve açık ipucu içeren şablonlar
+      template = templates[Math.floor(Math.random() * Math.min(3, templates.length))]; 
+    } else if (difficulty === 'hard') {
+      // Zor: Daha karmaşık şablonlar
+      template = templates[Math.floor(Math.random() * templates.length)];
+      if (Math.random() > 0.5) {
+        // Zor sorularda %50 olasılıkla ipuçlarını kaldır
+        template = template.replace(/\. .*$/, '.');
+      }
+    } else {
+      // Orta: Tüm şablonlar
+      template = templates[Math.floor(Math.random() * templates.length)];
+    }
+    
+    // Şablonu doldur
+    question = fillTemplate(template);
+    
+    // Sorunun mantıklı olup olmadığını kontrol et
+    isValid = isQuestionValid(question, targetVerb);
+    
+    attempts++;
+  }
   
   // Seçenekleri hazırla
   const otherOptions = getOtherOptions(targetVerb);
-  const options = [targetVerb, ...otherOptions].sort(() => 0.5 - Math.random());
+  const options = [targetVerb, ...otherOptions];
+  
+  // Zorluk seviyesine göre seçenekleri karıştır
+  if (difficulty !== 'easy') {
+    // Kolay olmayan sorularda seçenekleri karıştır
+    options.sort(() => 0.5 - Math.random());
+  }
   
   // Doğru cevabın indeksini bul
   const correctAnswerIndex = options.indexOf(targetVerb);
@@ -197,44 +323,22 @@ const generateAIQuestion = (targetVerb: string) => {
   // Kullanım amacını seç ve açıklama oluştur
   const usageType = modalVerbUsages[targetVerb as keyof typeof modalVerbUsages];
   const randomUsageIndex = Math.floor(Math.random() * usageType.usages.length);
+  const usage = usageType.usages[randomUsageIndex];
   const explanation = usageType.explanations[randomUsageIndex];
   
-  // Cümlenin hangi kısmının ipucu olarak kullanılabileceğini belirleme
-  const clueWords = usageType.clueWords;
-  const randomClueIndex = Math.floor(Math.random() * clueWords.length);
-  const clueWord = clueWords[randomClueIndex];
-  
-  // Cümleyi parçalara ayrıştırma ve ipucu bölgeyi belirleme
-  let questionParts = parseQuestionForClues(question, targetVerb);
-  
-  // Eğer clue'ları bulamazsak basit bir ipucu oluştur
-  if (!questionParts.highlightedPart) {
-    // Cümledeki modal boşluk dışındaki kısımları analiz edelim
-    const parts = question.split('______');
-    if (parts.length >= 2) {
-      // Cümlenin boşluktan sonraki kısmını ipucu olarak kullan
-      questionParts = {
-        beforeHighlight: parts[0] + '______',
-        highlightedPart: parts[1].split('.')[0], // İlk nokta işaretine kadar olan kısmı al
-        afterHighlight: parts[1].includes('.') ? '.' + parts[1].split('.').slice(1).join('.') : '',
-        clueType: usageType.usages[randomUsageIndex]
-      };
-    }
-  }
-  
-  return {
+  // Modal verbi ve onun açıklamasını içeren nesneyi oluştur
+  const result = {
     question,
     options,
     correctAnswer: correctAnswerIndex,
     explanation,
     modalVerb: targetVerb,
-    isAIGenerated: true,
-    clueInfo: {
-      clueWord,
-      clueType: usageType.usages[randomUsageIndex],
-      questionParts
-    }
+    usage: usage
   };
+    // İpucu oluştur
+  const clueInfo = parseQuestionForClues(question, targetVerb);
+  
+  return { ...result, clueInfo };
 };
 
 // Cümledeki ipucu bölgeleri tespit etme
@@ -372,17 +476,20 @@ export default async function handler(
       ? (req.query.difficulty as string || 'medium') 
       : (req.body?.difficulty || 'medium');
     
+    // Geçerli zorluk seviyesi kontrolü
+    const validDifficulty = ['easy', 'medium', 'hard'].includes(difficulty) ? difficulty : 'medium';
+    
     // Select random modal verb and context
     const selectedVerb = modalVerbs[Math.floor(Math.random() * modalVerbs.length)];
     const selectedContext = contexts[Math.floor(Math.random() * contexts.length)];
 
-    // AI benzeri soru üret
-    const generatedQuestion = generateAIQuestion(selectedVerb);
+    // AI benzeri soru üret - zorluk seviyesini de gönder
+    const generatedQuestion = generateAIQuestion(selectedVerb, validDifficulty);
 
     // Zorluk seviyesi ve bağlam ekleyelim
     const enhancedQuestion = {
       ...generatedQuestion,
-      difficulty,
+      difficulty: validDifficulty,
       context: selectedContext
     };
 
@@ -393,9 +500,11 @@ export default async function handler(
     });
 
   } catch (error) {
-    console.error('Error generating question:', error);    // Hata durumunda bile bir soru üretmeye çalışalım
+    console.error('Error generating question:', error);
+    
+    // Hata durumunda bile bir soru üretmeye çalışalım
     const fallbackVerb = modalVerbs[0];
-    const fallbackQuestion = generateAIQuestion(fallbackVerb);
+    const fallbackQuestion = generateAIQuestion(fallbackVerb, 'medium');
     
     return res.status(200).json({
       success: true,
