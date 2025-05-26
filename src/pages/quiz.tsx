@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { Brain, Clock, Star, ArrowRight, Home, Trophy } from 'lucide-react';
 import Link from 'next/link';
 
@@ -20,7 +19,6 @@ interface User {
 }
 
 export default function Quiz() {
-  const router = useRouter();
   const [username, setUsername] = useState('');
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null);
