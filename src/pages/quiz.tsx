@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Brain, Clock, Star, ArrowRight, Home, Trophy } from 'lucide-react';
 import Link from 'next/link';
 
@@ -9,16 +9,6 @@ interface Question {
   correctAnswer: number;
   explanation: string;
   modalVerb: string;
-  clueInfo?: {
-    clueWord?: string;
-    clueType?: string;
-    questionParts?: {
-      beforeHighlight: string;
-      highlightedPart: string;
-      afterHighlight: string;
-      clueType?: string;
-    }
-  }
 }
 
 interface User {
@@ -38,45 +28,7 @@ export default function Quiz() {
   const [timeLeft, setTimeLeft] = useState(30);
   const [questionCount, setQuestionCount] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  
-  // Answer handler function
-  const handleAnswer = useCallback((answerIndex: number) => {
-    if (selectedAnswer !== null || showResult) return;
 
-    setSelectedAnswer(answerIndex);
-    setShowResult(true);
-
-    const isCorrect = answerIndex === currentQuestion?.correctAnswer;
-    const newQuestionCount = questionCount + 1;
-    const newCorrectAnswers = correctAnswers + (isCorrect ? 1 : 0);
-
-    setQuestionCount(newQuestionCount);
-    setCorrectAnswers(newCorrectAnswers);
-
-    // Update user stats
-    if (currentUser) {
-      const updatedUser: User = {
-        ...currentUser,
-        score: currentUser.score + (isCorrect ? 10 : 0),
-        questionsAnswered: newQuestionCount,
-        accuracy: Math.round((newCorrectAnswers / newQuestionCount) * 100)
-      };
-      setCurrentUser(updatedUser);
-
-      // Save to localStorage for leaderboard
-      const users = JSON.parse(localStorage.getItem('quizUsers') || '[]');
-      const existingUserIndex = users.findIndex((u: User) => u.username === updatedUser.username);
-      
-      if (existingUserIndex >= 0) {
-        users[existingUserIndex] = updatedUser;
-      } else {
-        users.push(updatedUser);
-      }
-      
-      localStorage.setItem('quizUsers', JSON.stringify(users));
-    }
-  }, [currentQuestion, correctAnswers, questionCount, selectedAnswer, showResult, currentUser]);
-  
   // Timer effect
   useEffect(() => {
     if (currentUser && currentQuestion && !showResult && timeLeft > 0) {
@@ -85,7 +37,7 @@ export default function Quiz() {
     } else if (timeLeft === 0 && !showResult) {
       handleAnswer(-1); // Time's up, wrong answer
     }
-  }, [timeLeft, currentUser, currentQuestion, showResult, handleAnswer]);
+  }, [timeLeft, currentUser, currentQuestion, showResult]);
 
   // Kullanıcı adı localStorage'da varsa otomatik olarak ayarla
   useEffect(() => {
@@ -188,10 +140,24 @@ export default function Quiz() {
       ];
 
       const randomQuestion = fallbackQuestions[Math.floor(Math.random() * fallbackQuestions.length)];
-      setCurrentQuestion(randomQuestion);    } finally {
+      setCurrentQuestion(randomQuestion);
+    } finally {
       setLoading(false);
     }
   };
+
+  const handleAnswer = (answerIndex: number) => {
+    if (selectedAnswer !== null || showResult) return;
+
+    setSelectedAnswer(answerIndex);
+    setShowResult(true);
+
+    const isCorrect = answerIndex === currentQuestion?.correctAnswer;
+    const newQuestionCount = questionCount + 1;
+    const newCorrectAnswers = correctAnswers + (isCorrect ? 1 : 0);
+
+    setQuestionCount(newQuestionCount);
+    setCorrectAnswers(newCorrectAnswers);
 
     // Update user stats
     if (currentUser) {
@@ -215,7 +181,7 @@ export default function Quiz() {
       
       localStorage.setItem('quizUsers', JSON.stringify(users));
     }
-  }, [currentQuestion, correctAnswers, questionCount, selectedAnswer, showResult, currentUser]);
+  };
 
   const nextQuestion = () => {
     generateQuestion();
@@ -368,50 +334,9 @@ export default function Quiz() {
                       {selectedAnswer === currentQuestion.correctAnswer ? '✓ Doğru!' : '✗ Yanlış!'}
                     </span>
                   </div>
-                  
-                  {/* Temel açıklama */}
-                  <p className="text-gray-700 dark:text-gray-200 text-base text-center mb-4">
+                  <p className="text-gray-700 dark:text-gray-200 text-base text-center">
                     <strong>Açıklama:</strong> {currentQuestion.explanation}
                   </p>
-
-                  {/* İpuçlarını gösterme - Yanlış cevaplarda */}
-                  {selectedAnswer !== currentQuestion.correctAnswer && currentQuestion.clueInfo && (
-                    <div className="mt-3 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border border-blue-200 dark:border-blue-800 w-full">
-                      <h4 className="text-center font-semibold text-blue-700 dark:text-blue-300 mb-3">
-                        Neden {currentQuestion.options[currentQuestion.correctAnswer]} kullanmalıyız?
-                      </h4>
-                      
-                      {/* Cümlede ipuçlarını görsel olarak vurgulama */}
-                      {currentQuestion.clueInfo.questionParts && currentQuestion.clueInfo.questionParts.highlightedPart && (
-                        <div className="text-gray-800 dark:text-gray-200 mb-3 text-base">
-                          <span>{currentQuestion.clueInfo.questionParts.beforeHighlight}</span>
-                          <span className="font-bold text-blue-700 dark:text-yellow-400 underline decoration-wavy decoration-2 underline-offset-4">
-                            {currentQuestion.clueInfo.questionParts.highlightedPart}
-                          </span>
-                          <span>{currentQuestion.clueInfo.questionParts.afterHighlight}</span>
-                        </div>
-                      )}
-                      
-                      {/* İpucu açıklaması */}                      <p className="text-gray-700 dark:text-gray-300 text-sm">
-                        <span className="font-semibold">İpucu:</span> Cümlede <span className="text-blue-700 dark:text-yellow-400 font-medium">{currentQuestion.clueInfo.questionParts?.highlightedPart || "vurgulanan kısım"}</span> 
-                        {currentQuestion.clueInfo.clueType ? ` bir &quot;${currentQuestion.clueInfo.clueType}&quot; durumu gösterir` : ' bir ipucu içerir'} ve 
-                        bu durumda <span className="font-semibold text-blue-700 dark:text-blue-300">{currentQuestion.options[currentQuestion.correctAnswer]}</span> modal verb&apos;i kullanılır.
-                      </p>
-                      
-                      {/* Yanlış seçim nedeni */}
-                      {selectedAnswer !== null && (
-                        <p className="text-gray-700 dark:text-gray-300 text-sm mt-2">
-                          <span className="font-semibold text-red-600 dark:text-red-400">&quot;{currentQuestion.options[selectedAnswer]}&quot;</span> ise 
-                          {currentQuestion.modalVerb === 'must' ? ' kesinlik veya zorunluluk gerektiren durumlarda kullanılır.' :
-                           currentQuestion.modalVerb === 'can\'t' ? ' imkansızlık veya mantıksal çelişki durumlarında kullanılır.' : 
-                           currentQuestion.modalVerb === 'could' ? ' geçmiş yetenek veya koşullu olasılık durumlarında kullanılır.' :
-                           currentQuestion.modalVerb === 'may' ? ' izin veya orta derecede olasılık durumlarında kullanılır.' :
-                           ' düşük olasılık veya belirsizlik durumlarında kullanılır.'}
-                        </p>
-                      )}
-                    </div>
-                  )}
-                  
                   <button
                     onClick={nextQuestion}
                     className="mt-6 inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-full shadow-lg hover:scale-105 hover:from-blue-700 hover:to-indigo-700 transition-all text-lg"
